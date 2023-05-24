@@ -1,6 +1,7 @@
 package com.example.lab6_sol.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "usuario")
@@ -12,15 +13,24 @@ public class Usuario {
     private int id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Este campo no puede estar vacío")
+    @Size(min = 3, max = 100, message = "El nombre debe tener entre 3 y 100 caracteres")
     private String nombres;
 
     @Column(nullable = false)
+    @NotBlank(message = "Este campo no puede estar vacío")
+    @Size(min = 3, max = 100, message = "El apellido debe tener entre 3 y 100 caracteres")
     private String apellidos;
 
     @Column(nullable = false)
+    @NotBlank(message = "Este campo no puede estar vacío")
+    @Digits(integer = 8,fraction = 0)
     private String dni;
 
     @Column(nullable = false)
+    @NotBlank(message = "Este campo no puede estar vacío")
+    @Positive
+    @Digits(integer = 10,fraction = 0)
     private int edad;
 
     @Column(nullable = false)

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de hospitales</title>
+  <div th:insert="~{fragments/general.html :: estilo}"></div>
+</head></head>
+<body>
+<div class="container">
+  <div th:insert="~{fragments/general.html :: header}"></div>
+  <h1>Nuevo Estudiante</h1>
+  <div class="row mb-4">
+    <div class="col-md-6 offset-md-3">
+      <form method="post" th:action="@{/estudiante/save}" th:object="${usuario}">
+        <div class="mb-3">
+          <label class="form-label">Nombres</label>
+          <input type="text" class="form-control" th:field="*{nombres}" th:classappend="${#fields.hasErrors('nombres')?'is-invalid':''}"/>
+          <div class="invalid-feedback" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Apellidos</label>
+          <input type="text" class="form-control" th:field="*{apellidos}" th:classappend="${#fields.hasErrors('apellidos')?'is-invalid':''}"/>
+          <div class="invalid-feedback" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">DNI</label>
+          <input type="text" class="form-control" th:field="*{dni}" th:classappend="${#fields.hasErrors('dni')?'is-invalid':''}"/>
+          <div class="invalid-feedback" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Edad</label>
+          <input type="text" class="form-control" th:field="*{edad}" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Correo</label>
+          <input type="text" class="form-control" th:field="*{correo}" />
+        </div>
+        <a th:href="@{'/estudiante/lista'}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
